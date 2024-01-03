@@ -25,11 +25,13 @@ h1 {
 }
 
 #game-board {
+    position: relative;
+
     width: 300px;
     height: 300px;
 
     background-color: white;
-    background-image: url("../svgs/tabuleiro.svg");
+    background-image: url("../assets/svgs/tabuleiro.svg");
     background-size: cover;
 
     display: grid;
@@ -63,12 +65,12 @@ h1 {
 }
 
 .x-parts {
-    background-image: url("../svgs/x.svg");
+    background-image: url("../assets/svgs/x.svg");
     background-size: cover;
 }
 
 .y-parts {
-    background-image: url("../svgs/o.svg");
+    background-image: url("../assets/svgs/o.svg");
     background-size: cover;
 }
 
@@ -81,11 +83,6 @@ h1 {
     position: absolute;
     top: 30px;
     right: 30px;
-}
-
-.custom-tooltip {
-    background-color: red !important;
-    --bs-tooltip-color: var(--bs-white) !important;
 }
 
 #scores {
@@ -115,4 +112,71 @@ h1 {
 .selected {
     margin: 7px;
     border: 3px black solid;
+}
+
+.line {
+    position: absolute;
+
+    width: 10px;
+    height: 290px;
+
+    border-radius: 5px;
+
+    background-color: rgba(12, 57, 255, 0.404);
+
+    z-index: 1;
+}
+
+.line-00 {
+    top: -95px;
+    left: 145px;
+
+    transform: rotateZ(90deg);
+}
+
+.line-01 {
+    top: calc(-95px + 100px);
+    left: 145px;
+
+    transform: rotateZ(90deg);
+}
+
+.line-02 {
+    top: calc(-95px + 200px);
+    left: 145px;
+
+    transform: rotateZ(90deg);
+}
+
+.line-10 {
+    top: 5px;
+    left: 45px;
+}
+
+.line-11 {
+    top: 5px;
+    left: calc(45px + 100px);
+}
+
+.line-12 {
+    top: 5px;
+    left: calc(45px + 200px);
+}
+
+.line-20 {
+    top: -35px;
+    left: 145px;
+
+    height: 370px;
+
+    transform: rotate(-45deg);
+}
+
+.line-21 {
+    top: -35px;
+    left: 145px;
+
+    height: 370px;
+
+    transform: rotate(45deg);
 }

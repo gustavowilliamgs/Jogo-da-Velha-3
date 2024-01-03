@@ -30,7 +30,7 @@
     <!--  -->
 </head>
 
-<body class="bg-light">
+<body class="">
     <h1 class="position-absolute">Jogo da Velha 3</h1>
 
     <button id="info" type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
@@ -47,20 +47,29 @@
     <div class="modal fade" id="modal-inicial" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content ">
                 <div class="modal-header">
                     <h5 class="modal-title">Bem vindo(a) ao Jogo da Velha 3</h5>
                 </div>
                 <div class="modal-body" id="modal-body-choice">
                     <p>Escolha quem vai fazer a primeira jogada:</p>
                     <div>
-                        <img id="btn-chose-x" class="btn-chose" src="svgs/x.svg">
-                        <img id="btn-chose-o" class="btn-chose" src="svgs/o.svg">
+                        <img id="btn-chose-x" class="btn-chose" src="assets/svgs/x.svg">
+                        <img id="btn-chose-o" class="btn-chose" src="assets/svgs/o.svg">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button id="btn-start" type="button" class="btn btn-primary">Iniciar</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-winner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div id="modal-content-winner" class="modal-content ">
+
             </div>
         </div>
     </div>
