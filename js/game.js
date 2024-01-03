@@ -169,14 +169,14 @@ function startGame(x, o) {
 
         if (xChampion) {
             animeWin(1);
-            // setTimeout(() => {
-            //     showWinX();
-            // }, "1000");
+            setTimeout(() => {
+                showWin("x");
+            }, "1000");
         } else if (oChampion) {
             animeWin(2);
-            // setTimeout(() => {
-            //     showWinO();
-            // }, "1000");
+            setTimeout(() => {
+                showWin("o");
+            }, "1000");
         }
     }
 
@@ -269,4 +269,56 @@ function startGame(x, o) {
             alert("Erro!");
         }
     }
+
+    function showWin(winner) {
+        let modalContent = null;
+
+        if (winner === "x") {
+            modalContent = `
+                <div class="modal-header">
+                    <h5 class="modal-title">X ganhou a partida</h5>
+                </div>
+                <div class="modal-body" id="modal-body-choice">
+                    <p>Jogador X ganhou a partida</p>
+                    <div>
+                        <img class="btn-chose" src="assets/svgs/x.svg">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-play-again" type="button" class="btn btn-primary">Jogar novamente</button>
+                </div>
+            `;
+        } else {
+            modalContent = `
+                <div class="modal-header">
+                    <h5 class="modal-title">X ganhou a partida</h5>
+                </div>
+                <div class="modal-body" id="modal-body-choice">
+                    <p>Jogador X ganhou a partida</p>
+                    <div>
+                        <img class="btn-chose" src="assets/svgs/x.svg">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-play-again" type="button" class="btn btn-primary">Jogar novamente</button>
+                </div>
+            `;
+        }
+
+        const $modalContentWinner = document.querySelector(
+            "#modal-content-winner"
+        );
+
+        $modalContentWinner.innerHTML = modalContent;
+
+        $("#modal-winner").modal("hide");
+        $game.innerHTML = "";
+        $("#modal-inicial").modal("show");
+    }
+
+    const $playAgain = document.querySelector("#btn-play-again");
+
+    $playAgain.addEventListener("click", () => {
+        $("#modal-winner").modal("hide");
+    });
 }

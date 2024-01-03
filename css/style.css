@@ -31,7 +31,7 @@ h1 {
     height: 300px;
 
     background-color: white;
-    background-image: url("../svgs/tabuleiro.svg");
+    background-image: url("../assets/svgs/tabuleiro.svg");
     background-size: cover;
 
     display: grid;
@@ -65,12 +65,12 @@ h1 {
 }
 
 .x-parts {
-    background-image: url("../svgs/x.svg");
+    background-image: url("../assets/svgs/x.svg");
     background-size: cover;
 }
 
 .y-parts {
-    background-image: url("../svgs/o.svg");
+    background-image: url("../assets/svgs/o.svg");
     background-size: cover;
 }
 
