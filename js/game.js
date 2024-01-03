@@ -152,18 +152,16 @@ function startGame(x, o) {
         for (let i = 0; i < gameBoard.length; i += 3) {
             let j = i / 3;
             if (gameBoard[i] === 1) {
-                xChampion ||=
-                    (gameBoard[i + 1] === 1 && gameBoard[i + 2] === 1) ||
-                    (gameBoard[j] === 1 &&
-                        gameBoard[j + 3] === 1 &&
-                        gameBoard[j + 6] === 1);
+                xChampion ||= gameBoard[i + 1] === 1 && gameBoard[i + 2] === 1;
+            }
+            if (gameBoard[j] === 1) {
+                xChampion ||= gameBoard[j + 3] === 1 && gameBoard[j + 6] === 1;
             }
             if (gameBoard[i] === 2) {
-                oChampion ||=
-                    (gameBoard[i + 1] === 2 && gameBoard[i + 2] === 2) ||
-                    (gameBoard[j] === 2 &&
-                        gameBoard[j + 3] === 2 &&
-                        gameBoard[j + 6] === 2);
+                oChampion ||= gameBoard[i + 1] === 2 && gameBoard[i + 2] === 2;
+            }
+            if (gameBoard[j] === 2) {
+                oChampion ||= gameBoard[j + 3] === 2 && gameBoard[j + 6] === 2;
             }
         }
 
@@ -272,7 +270,6 @@ function startGame(x, o) {
 
     function showWin(winner) {
         let modalContent = null;
-
         if (winner === "x") {
             modalContent = `
                 <div class="modal-header">
@@ -288,15 +285,15 @@ function startGame(x, o) {
                     <button id="btn-play-again" type="button" class="btn btn-primary">Jogar novamente</button>
                 </div>
             `;
-        } else {
+        } else if (winner === "o") {
             modalContent = `
                 <div class="modal-header">
-                    <h5 class="modal-title">X ganhou a partida</h5>
+                    <h5 class="modal-title">O ganhou a partida</h5>
                 </div>
                 <div class="modal-body" id="modal-body-choice">
-                    <p>Jogador X ganhou a partida</p>
+                    <p>Jogador O ganhou a partida</p>
                     <div>
-                        <img class="btn-chose" src="assets/svgs/x.svg">
+                        <img class="btn-chose" src="assets/svgs/o.svg">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -311,14 +308,14 @@ function startGame(x, o) {
 
         $modalContentWinner.innerHTML = modalContent;
 
-        $("#modal-winner").modal("hide");
+        $("#modal-winner").modal("show");
         $game.innerHTML = "";
-        $("#modal-inicial").modal("show");
+
+        const $playAgain = document.querySelector("#btn-play-again");
+        console.log($playAgain);
+        $playAgain.addEventListener("click", () => {
+            $("#modal-winner").modal("hide");
+            $("#modal-inicial").modal("show");
+        });
     }
-
-    const $playAgain = document.querySelector("#btn-play-again");
-
-    $playAgain.addEventListener("click", () => {
-        $("#modal-winner").modal("hide");
-    });
 }
