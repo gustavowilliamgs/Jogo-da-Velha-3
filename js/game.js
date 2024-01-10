@@ -34,11 +34,6 @@ $btnChoseO.addEventListener("click", function () {
     o = true;
 });
 
-$btnStart.addEventListener("click", () => {
-    $modalInicial.modal("hide");
-    startGame(x, o);
-});
-
 const gameBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 function startGame(x, o) {
     const $game = document.querySelector("#game");
