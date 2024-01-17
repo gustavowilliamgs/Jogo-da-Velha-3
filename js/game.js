@@ -34,6 +34,13 @@ $btnChoseO.addEventListener("click", function () {
     o = true;
 });
 
+$btnStart.addEventListener("click", () => {
+    if (x !== null && o !== null) {
+        startGame(x, o);
+        $modalInicial.modal("hide");
+    }
+});
+
 const gameBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 function startGame(x, o) {
     const $game = document.querySelector("#game");
@@ -50,6 +57,14 @@ function startGame(x, o) {
     $player2.id = "player-2";
     $player2.className = "players";
     $player2.innerHTML = `<h2>Jogador 2</h2>`;
+
+    if (x) {
+        $player1.classList.add("active");
+        $player2.classList.add("disabled");
+    } else {
+        $player1.classList.add("disabled");
+        $player2.classList.add("active");
+    }
 
     $game.appendChild($player1);
     $game.appendChild($gameBoard);
@@ -129,6 +144,18 @@ function startGame(x, o) {
 
         x = !x;
         o = !o;
+
+        if (x) {
+            $player1.classList.remove("disabled");
+            $player1.classList.add("active");
+            $player2.classList.remove("active");
+            $player2.classList.add("disabled");
+        } else {
+            $player1.classList.remove("active");
+            $player1.classList.add("disabled");
+            $player2.classList.remove("disabled");
+            $player2.classList.add("active");
+        }
 
         checkChampion();
     }
