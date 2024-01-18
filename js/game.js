@@ -101,7 +101,7 @@ function startGame(x, o) {
         part.ondragstart = function (event) {
             event.dataTransfer.setData("text", event.target.id);
             event.dataTransfer.effectAllowed = "move";
-            window.navigator.vibrate(300);
+            window.navigator.vibrate(200);
         };
     });
 
