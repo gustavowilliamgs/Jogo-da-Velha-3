@@ -101,14 +101,18 @@ function startGame(x, o) {
         part.ondragstart = function (event) {
             event.dataTransfer.setData("text", event.target.id);
             event.dataTransfer.effectAllowed = "move";
-            document.body.classList.add("start-event");
+            window.navigator.vibrate(300);
         };
     });
 
     $squares.forEach((square, i) => {
         square.ondragover = function (event) {
             event.preventDefault();
-            event.target.style.backgroundColor = "#19875471";
+            if (square.childElementCount < 1) {
+                event.target.style.backgroundColor = "#19875471";
+            } else {
+                event.target.style.backgroundColor = "#dc354681";
+            }
         };
 
         square.ondragleave = (event) => {
@@ -137,10 +141,6 @@ function startGame(x, o) {
 
                 changePlayer();
             }
-        };
-
-        square.ondragend = () => {
-            document.body.classList.remove("start-event");
         };
     });
 

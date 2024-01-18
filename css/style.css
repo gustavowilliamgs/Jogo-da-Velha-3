@@ -17,10 +17,6 @@ body {
     overflow-x: hidden;
 }
 
-body.start-event {
-    background-color: rgba(160, 160, 160, 0.63);
-}
-
 h1 {
     top: 30px;
 }
