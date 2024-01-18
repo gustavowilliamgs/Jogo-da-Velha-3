@@ -32,6 +32,18 @@ h1 {
     padding: 40px;
 }
 
+.fullScreen {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 30px;
+    left: 30px;
+    border: none;
+    background-color: transparent;
+    background-image: url("../assets/imgs/full_screen_icon.png");
+    background-size: cover;
+}
+
 #game-board {
     position: relative;
 
@@ -244,6 +256,11 @@ h1 {
     .disabled,
     .disabled h2 {
         display: none;
+    }
+
+    .fullScreen {
+        top: auto;
+        bottom: 20px;
     }
 }
 
