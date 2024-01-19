@@ -7,29 +7,29 @@ $(window).on("load", () => {
 let x = null;
 let o = null;
 
-const btnChoseXEl = document.querySelector("#btn-chose-x");
-const btnChoseOEl = document.querySelector("#btn-chose-o");
-const btnStartEl = document.querySelector("#btn-start");
+const btnEscolhaXEl = document.querySelector("#btn-chose-x");
+const btnEscolhaOEl = document.querySelector("#btn-chose-o");
+const btnComecarEl = document.querySelector("#btn-start");
 
-btnChoseXEl.addEventListener("click", function () {
-    btnChoseXEl.classList.add("selected");
-    btnChoseOEl.classList.remove("selected");
+btnEscolhaXEl.addEventListener("click", function () {
+    btnEscolhaXEl.classList.add("selected");
+    btnEscolhaOEl.classList.remove("selected");
 
     x = true;
     o = false;
 });
 
-btnChoseOEl.addEventListener("click", function () {
-    btnChoseOEl.classList.add("selected");
-    btnChoseXEl.classList.remove("selected");
+btnEscolhaOEl.addEventListener("click", function () {
+    btnEscolhaOEl.classList.add("selected");
+    btnEscolhaXEl.classList.remove("selected");
 
     x = false;
     o = true;
 });
 
-btnStartEl.addEventListener("click", () => {
+btnComecarEl.addEventListener("click", () => {
     if (x !== null && o !== null) {
-        startGame(x, o);
+        comecarJogo(x, o);
         modalInicialEl.modal("hide");
     }
 });

@@ -204,20 +204,13 @@ h1 {
 
 @media (max-width: 880px) {
     .players {
-        width: 200px;
+        width: 100px;
         height: 200px;
         flex-direction: column;
         gap: 15px;
     }
     .players h2 {
         transform: translateY(-120px);
-    }
-}
-
-@media (max-width: 880px) {
-    .players {
-        width: 100px;
-        height: 150px;
     }
 }
 

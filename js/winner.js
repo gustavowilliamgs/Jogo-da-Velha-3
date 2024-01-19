@@ -1,125 +1,125 @@
-function checkChampion() {
-    let xChampion = false;
-    let oChampion = false;
+function checarGanhador() {
+    let xGanhou = false;
+    let oGanhou = false;
 
-    xChampion =
-        (gameBoard[0] === 1 && gameBoard[4] === 1 && gameBoard[8] === 1) ||
-        (gameBoard[2] === 1 && gameBoard[4] === 1 && gameBoard[6] === 1);
-    oChampion =
-        (gameBoard[0] === 2 && gameBoard[4] === 2 && gameBoard[8] === 2) ||
-        (gameBoard[2] === 2 && gameBoard[4] === 2 && gameBoard[6] === 2);
+    xGanhou =
+        (tabuleiro[0] === 1 && tabuleiro[4] === 1 && tabuleiro[8] === 1) ||
+        (tabuleiro[2] === 1 && tabuleiro[4] === 1 && tabuleiro[6] === 1);
+    oGanhou =
+        (tabuleiro[0] === 2 && tabuleiro[4] === 2 && tabuleiro[8] === 2) ||
+        (tabuleiro[2] === 2 && tabuleiro[4] === 2 && tabuleiro[6] === 2);
 
-    for (let i = 0; i < gameBoard.length; i += 3) {
+    for (let i = 0; i < tabuleiro.length; i += 3) {
         let j = i / 3;
-        if (gameBoard[i] === 1) {
-            xChampion ||= gameBoard[i + 1] === 1 && gameBoard[i + 2] === 1;
+        if (tabuleiro[i] === 1) {
+            xGanhou ||= tabuleiro[i + 1] === 1 && tabuleiro[i + 2] === 1;
         }
-        if (gameBoard[j] === 1) {
-            xChampion ||= gameBoard[j + 3] === 1 && gameBoard[j + 6] === 1;
+        if (tabuleiro[j] === 1) {
+            xGanhou ||= tabuleiro[j + 3] === 1 && tabuleiro[j + 6] === 1;
         }
-        if (gameBoard[i] === 2) {
-            oChampion ||= gameBoard[i + 1] === 2 && gameBoard[i + 2] === 2;
+        if (tabuleiro[i] === 2) {
+            oGanhou ||= tabuleiro[i + 1] === 2 && tabuleiro[i + 2] === 2;
         }
-        if (gameBoard[j] === 2) {
-            oChampion ||= gameBoard[j + 3] === 2 && gameBoard[j + 6] === 2;
+        if (tabuleiro[j] === 2) {
+            oGanhou ||= tabuleiro[j + 3] === 2 && tabuleiro[j + 6] === 2;
         }
     }
 
-    if (xChampion) {
-        animeWin(1);
+    if (xGanhou) {
+        animacaoDoGanhador(1);
         setTimeout(() => {
-            showWin("x");
+            mostrarGanhador("x");
         }, "1000");
-    } else if (oChampion) {
-        animeWin(2);
+    } else if (oGanhou) {
+        animacaoDoGanhador(2);
         setTimeout(() => {
-            showWin("o");
+            mostrarGanhador("o");
         }, "1000");
     }
 }
 
-function animeWin(winner) {
+function animacaoDoGanhador(ganhador) {
     if (
-        gameBoard[0] === winner &&
-        gameBoard[1] === winner &&
-        gameBoard[2] === winner
+        tabuleiro[0] === ganhador &&
+        tabuleiro[1] === ganhador &&
+        tabuleiro[2] === ganhador
     ) {
-        lineWin("horizontal", 0);
+        linha("horizontal", 0);
     } else if (
-        gameBoard[3] === winner &&
-        gameBoard[4] === winner &&
-        gameBoard[5] === winner
+        tabuleiro[3] === ganhador &&
+        tabuleiro[4] === ganhador &&
+        tabuleiro[5] === ganhador
     ) {
-        lineWin("horizontal", 1);
+        linha("horizontal", 1);
     } else if (
-        gameBoard[6] === winner &&
-        gameBoard[7] === winner &&
-        gameBoard[8] === winner
+        tabuleiro[6] === ganhador &&
+        tabuleiro[7] === ganhador &&
+        tabuleiro[8] === ganhador
     ) {
-        lineWin("horizontal", 2);
+        linha("horizontal", 2);
     } else if (
-        gameBoard[0] === winner &&
-        gameBoard[3] === winner &&
-        gameBoard[6] === winner
+        tabuleiro[0] === ganhador &&
+        tabuleiro[3] === ganhador &&
+        tabuleiro[6] === ganhador
     ) {
-        lineWin("vertical", 0);
+        linha("vertical", 0);
     } else if (
-        gameBoard[1] === winner &&
-        gameBoard[4] === winner &&
-        gameBoard[7] === winner
+        tabuleiro[1] === ganhador &&
+        tabuleiro[4] === ganhador &&
+        tabuleiro[7] === ganhador
     ) {
-        lineWin("vertical", 1);
+        linha("vertical", 1);
     } else if (
-        gameBoard[2] === winner &&
-        gameBoard[5] === winner &&
-        gameBoard[8] === winner
+        tabuleiro[2] === ganhador &&
+        tabuleiro[5] === ganhador &&
+        tabuleiro[8] === ganhador
     ) {
-        lineWin("vertical", 2);
+        linha("vertical", 2);
     } else if (
-        gameBoard[0] === winner &&
-        gameBoard[4] === winner &&
-        gameBoard[8] === winner
+        tabuleiro[0] === ganhador &&
+        tabuleiro[4] === ganhador &&
+        tabuleiro[8] === ganhador
     ) {
-        lineWin("diagonal", 0);
+        linha("diagonal", 0);
     } else if (
-        gameBoard[2] === winner &&
-        gameBoard[4] === winner &&
-        gameBoard[6] === winner
+        tabuleiro[2] === ganhador &&
+        tabuleiro[4] === ganhador &&
+        tabuleiro[6] === ganhador
     ) {
-        lineWin("diagonal", 1);
+        linha("diagonal", 1);
     }
 }
 
-function lineWin(direction, modo) {
-    const lineEl = document.createElement("div");
-    lineEl.classList.add("line");
-    document.querySelector("#game-board").appendChild(lineEl);
+function linha(direction, modo) {
+    const linhaEl = document.createElement("div");
+    linhaEl.classList.add("line");
+    document.querySelector("#game-board").appendChild(linhaEl);
 
     if (direction === "horizontal") {
         if (modo === 0) {
-            lineEl.classList.add("line-00");
+            linhaEl.classList.add("line-00");
         } else if (modo === 1) {
-            lineEl.classList.add("line-01");
+            linhaEl.classList.add("line-01");
         } else if (modo === 2) {
-            lineEl.classList.add("line-02");
+            linhaEl.classList.add("line-02");
         } else {
             alert("Erro!");
         }
     } else if (direction === "vertical") {
         if (modo === 0) {
-            lineEl.classList.add("line-10");
+            linhaEl.classList.add("line-10");
         } else if (modo === 1) {
-            lineEl.classList.add("line-11");
+            linhaEl.classList.add("line-11");
         } else if (modo === 2) {
-            lineEl.classList.add("line-12");
+            linhaEl.classList.add("line-12");
         } else {
             alert("Erro!");
         }
     } else if (direction === "diagonal") {
         if (modo === 0) {
-            lineEl.classList.add("line-20");
+            linhaEl.classList.add("line-20");
         } else if (modo === 1) {
-            lineEl.classList.add("line-21");
+            linhaEl.classList.add("line-21");
         } else {
             alert("Erro!");
         }
@@ -128,9 +128,9 @@ function lineWin(direction, modo) {
     }
 }
 
-function showWin(winner) {
+function mostrarGanhador(ganhador) {
     let modalContent = null;
-    if (winner === "x") {
+    if (ganhador === "x") {
         modalContent = `
                 <div class="modal-header">
                     <h5 class="modal-title">X ganhou a partida</h5>
@@ -145,7 +145,7 @@ function showWin(winner) {
                     <button id="btn-play-again" type="button" class="btn btn-primary">Jogar novamente</button>
                 </div>
             `;
-    } else if (winner === "o") {
+    } else if (ganhador === "o") {
         modalContent = `
                 <div class="modal-header">
                     <h5 class="modal-title">O ganhou a partida</h5>
@@ -162,18 +162,18 @@ function showWin(winner) {
             `;
     }
 
-    const modalContentWinnerEl = document.querySelector(
+    const conteudoModalVencedor = document.querySelector(
         "#modal-content-winner"
     );
 
-    modalContentWinnerEl.innerHTML = modalContent;
+    conteudoModalVencedor.innerHTML = modalContent;
 
-    "#Elmodal-winner".modal("show");
+    $("#modal-winner").modal("show");
     document.querySelector("#game").innerHTML = "";
 
-    const playAgainEl = document.querySelector("#btn-play-again");
-    playAgainEl.addEventListener("click", () => {
-        "#Elmodal-winner".modal("hide");
-        "#Elmodal-inicial".modal("show");
+    const jogarNovamenteEl = document.querySelector("#btn-play-again");
+    jogarNovamenteEl.addEventListener("click", () => {
+        $("#modal-winner").modal("hide");
+        $("#modal-inicial").modal("show");
     });
 }
