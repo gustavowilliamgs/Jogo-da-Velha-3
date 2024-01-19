@@ -1,61 +1,61 @@
 const gameBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function startGame(x, o) {
-    const $game = document.querySelector("#game");
+    const gameEl = document.querySelector("#game");
 
-    const $gameBoard = document.createElement("div");
-    $gameBoard.id = "game-board";
+    const gameBoardEl = document.createElement("div");
+    gameBoardEl.id = "game-board";
 
-    const $player1 = document.createElement("div");
-    $player1.id = "player-1";
-    $player1.className = "players";
-    $player1.innerHTML = `<h2>Jogador 1</h2>`;
+    const player1El = document.createElement("div");
+    player1El.id = "player-1";
+    player1El.className = "players";
+    player1El.innerHTML = `<h2>Jogador 1</h2>`;
 
-    const $player2 = document.createElement("div");
-    $player2.id = "player-2";
-    $player2.className = "players";
-    $player2.innerHTML = `<h2>Jogador 2</h2>`;
+    const player2El = document.createElement("div");
+    player2El.id = "player-2";
+    player2El.className = "players";
+    player2El.innerHTML = `<h2>Jogador 2</h2>`;
 
     if (x) {
-        $player1.classList.add("active");
-        $player2.classList.add("disabled");
+        player1El.classList.add("active");
+        player2El.classList.add("disabled");
     } else {
-        $player1.classList.add("disabled");
-        $player2.classList.add("active");
+        player1El.classList.add("disabled");
+        player2El.classList.add("active");
     }
 
-    $game.appendChild($player1);
-    $game.appendChild($gameBoard);
-    $game.appendChild($player2);
+    gameEl.appendChild(player1El);
+    gameEl.appendChild(gameBoardEl);
+    gameEl.appendChild(player2El);
 
     for (let i = 0; i < 3; i++) {
-        const $x = document.createElement("div");
-        const $o = document.createElement("div");
+        const xEl = document.createElement("div");
+        const oEl = document.createElement("div");
 
-        $x.className = "x-parts parts";
-        $o.className = "y-parts parts";
+        xEl.className = "x-parts parts";
+        oEl.className = "y-parts parts";
 
-        $x.id = "x-" + i;
-        $o.id = "o-" + i;
+        xEl.id = "x-" + i;
+        oEl.id = "o-" + i;
 
-        $x.draggable = x;
-        $o.draggable = o;
+        xEl.draggable = x;
+        oEl.draggable = o;
 
-        $player1.appendChild($x);
-        $player2.appendChild($o);
+        player1El.appendChild(xEl);
+        player2El.appendChild(oEl);
     }
 
     for (let i = 0; i < 9; i++) {
-        const $square = document.createElement("div");
-        $square.className = "squares";
+        const squareEl = document.createElement("div");
+        squareEl.className = "squares";
 
-        $gameBoard.appendChild($square);
+        gameBoardEl.appendChild(squareEl);
     }
 
-    const $parts = document.querySelectorAll(".parts");
-    const $squares = document.querySelectorAll(".squares");
+    const partsEl = document.querySelectorAll(".parts");
+    const squaresEl = document.querySelectorAll(".squares");
 
-    $parts.forEach((part) => {
+    partsEl.forEach((part) => {
         part.ondragstart = function (event) {
             event.dataTransfer.setData("text", event.target.id);
             event.dataTransfer.effectAllowed = "move";
@@ -63,7 +63,7 @@ function startGame(x, o) {
         };
     });
 
-    $squares.forEach((square, i) => {
+    squaresEl.forEach((square, i) => {
         square.ondragover = function (event) {
             event.preventDefault();
             if (square.childElementCount < 1) {
@@ -91,7 +91,7 @@ function startGame(x, o) {
                     gameBoard[i] = 2;
                 }
 
-                $squares.forEach((square, i) => {
+                squaresEl.forEach((square, i) => {
                     if (square.childElementCount === 0) {
                         gameBoard[i] = 0;
                     }
@@ -103,9 +103,9 @@ function startGame(x, o) {
     });
 
     function changePlayer() {
-        const $parts = document.querySelectorAll(".parts");
+        const partsEl = document.querySelectorAll(".parts");
 
-        $parts.forEach((part) => {
+        partsEl.forEach((part) => {
             part.draggable = !part.draggable;
         });
 
@@ -113,15 +113,15 @@ function startGame(x, o) {
         o = !o;
 
         if (x) {
-            $player1.classList.remove("disabled");
-            $player1.classList.add("active");
-            $player2.classList.remove("active");
-            $player2.classList.add("disabled");
+            player1El.classList.remove("disabled");
+            player1El.classList.add("active");
+            player2El.classList.remove("active");
+            player2El.classList.add("disabled");
         } else {
-            $player1.classList.remove("active");
-            $player1.classList.add("disabled");
-            $player2.classList.remove("disabled");
-            $player2.classList.add("active");
+            player1El.classList.remove("active");
+            player1El.classList.add("disabled");
+            player2El.classList.remove("disabled");
+            player2El.classList.add("active");
         }
 
         checkChampion();

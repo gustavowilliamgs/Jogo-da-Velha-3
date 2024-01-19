@@ -91,35 +91,35 @@ function animeWin(winner) {
 }
 
 function lineWin(direction, modo) {
-    const $line = document.createElement("div");
-    $line.classList.add("line");
-    document.querySelector("#game-board").appendChild($line);
+    const lineEl = document.createElement("div");
+    lineEl.classList.add("line");
+    document.querySelector("#game-board").appendChild(lineEl);
 
     if (direction === "horizontal") {
         if (modo === 0) {
-            $line.classList.add("line-00");
+            lineEl.classList.add("line-00");
         } else if (modo === 1) {
-            $line.classList.add("line-01");
+            lineEl.classList.add("line-01");
         } else if (modo === 2) {
-            $line.classList.add("line-02");
+            lineEl.classList.add("line-02");
         } else {
             alert("Erro!");
         }
     } else if (direction === "vertical") {
         if (modo === 0) {
-            $line.classList.add("line-10");
+            lineEl.classList.add("line-10");
         } else if (modo === 1) {
-            $line.classList.add("line-11");
+            lineEl.classList.add("line-11");
         } else if (modo === 2) {
-            $line.classList.add("line-12");
+            lineEl.classList.add("line-12");
         } else {
             alert("Erro!");
         }
     } else if (direction === "diagonal") {
         if (modo === 0) {
-            $line.classList.add("line-20");
+            lineEl.classList.add("line-20");
         } else if (modo === 1) {
-            $line.classList.add("line-21");
+            lineEl.classList.add("line-21");
         } else {
             alert("Erro!");
         }
@@ -162,16 +162,18 @@ function showWin(winner) {
             `;
     }
 
-    const $modalContentWinner = document.querySelector("#modal-content-winner");
+    const modalContentWinnerEl = document.querySelector(
+        "#modal-content-winner"
+    );
 
-    $modalContentWinner.innerHTML = modalContent;
+    modalContentWinnerEl.innerHTML = modalContent;
 
-    $("#modal-winner").modal("show");
+    "#Elmodal-winner".modal("show");
     document.querySelector("#game").innerHTML = "";
 
-    const $playAgain = document.querySelector("#btn-play-again");
-    $playAgain.addEventListener("click", () => {
-        $("#modal-winner").modal("hide");
-        $("#modal-inicial").modal("show");
+    const playAgainEl = document.querySelector("#btn-play-again");
+    playAgainEl.addEventListener("click", () => {
+        "#Elmodal-winner".modal("hide");
+        "#Elmodal-inicial".modal("show");
     });
 }
