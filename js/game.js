@@ -63,23 +63,23 @@ function comecarJogo(x, o) {
         };
     });
 
-    quadradosEl.forEach((quadrados, i) => {
-        quadrados.ondragover = function (e) {
+    quadradosEl.forEach((quadrado, i) => {
+        quadrado.ondragover = function (e) {
             e.preventDefault();
-            if (quadrados.childElementCount < 1) {
-                e.target.style.backgroundColor = "#19875471";
+            if (quadrado.childElementCount < 1) {
+                quadrado.style.backgroundColor = "#19875471";
             } else {
-                e.target.style.backgroundColor = "#dc354681";
+                quadrado.style.backgroundColor = "#dc354681";
             }
         };
 
-        quadrados.ondragleave = (e) => {
+        quadrado.ondragleave = (e) => {
             e.target.style.backgroundColor = "transparent";
         };
 
-        quadrados.ondrop = function (e) {
+        quadrado.ondrop = function (e) {
             e.target.style.backgroundColor = "transparent";
-            if (quadrados.childElementCount < 1) {
+            if (quadrado.childElementCount < 1) {
                 const data = e.dataTransfer.getData("text");
 
                 e.target.appendChild(document.getElementById(data));
@@ -91,8 +91,8 @@ function comecarJogo(x, o) {
                     tabuleiro[i] = 2;
                 }
 
-                quadradosEl.forEach((quadrados, i) => {
-                    if (quadrados.childElementCount === 0) {
+                quadradosEl.forEach((quadrado, i) => {
+                    if (quadrado.childElementCount === 0) {
                         tabuleiro[i] = 0;
                     }
                 });
