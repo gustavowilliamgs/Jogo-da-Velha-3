@@ -59,7 +59,7 @@ function comecarJogo(x, o) {
         peca.ondragstart = function (e) {
             e.dataTransfer.setData("text", e.target.id);
             e.dataTransfer.effectAllowed = "move";
-            window.navigator.vibrate(100);
+            window.navigator.vibrate(300);
         };
     });
 
