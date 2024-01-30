@@ -8,6 +8,18 @@
     .players h2 {
         transform: translateY(-120px);
     }
+}
+
+@media (max-width: 630px) {
+    #game-board {
+        width: 250px;
+        height: 250px;
+    }
+
+    .parts {
+        width: 40px;
+        height: 40px;
+    }
 
     .line {
         height: 265px;
@@ -51,17 +63,6 @@
     }
 }
 
-@media (max-width: 630px) {
-    #game-board {
-        width: 250px;
-        height: 250px;
-    }
-    .parts {
-        width: 40px;
-        height: 40px;
-    }
-}
-
 @media (max-width: 600px) {
     #scores {
         position: absolute;
@@ -76,6 +77,7 @@
         width: 200px;
         height: 80px;
     }
+
     .players h2 {
         transform: translateY(-70px);
     }
@@ -83,6 +85,7 @@
     .active {
         display: flex;
     }
+
     .disabled,
     .disabled h2 {
         display: none;
@@ -104,14 +107,17 @@
     #game {
         padding: 20px;
     }
+
     h1 {
         top: 20px;
     }
+
     #scores {
         position: absolute;
         top: 20px;
         left: 20px;
     }
+
     #info {
         position: absolute;
         top: 20px;

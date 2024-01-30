@@ -33,3 +33,13 @@ btnComecarEl.addEventListener("click", () => {
         modalInicialEl.modal("hide");
     }
 });
+
+const pontuacoesEl = document.querySelector("#scores");
+
+pontuacoesEl.addEventListener("click", () => {
+    const modalPontuacoesEl = $("#modal-pontuacoes");
+    const conteudoModalPontuacoesEl = document.querySelector(
+        "#modal-content-pontuacoes"
+    );
+    modalPontuacoesEl.modal("show");
+});
