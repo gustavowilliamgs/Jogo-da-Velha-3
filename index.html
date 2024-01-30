@@ -91,22 +91,25 @@
     <div class="modal fade" id="modal-pontuacoes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div id="modal-content-pontuacoes" class="modal-content bg-dark">
+            <div class="modal-content bg-dark">
                 <div class="modal-header">
-                    <h5 class="modal-title">Pontuações</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-edit" data-bs-toggle="tooltip" data-bs-placement="left"
+                        data-bs-title="Editar nomes"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Você pode adicionar ou alterar os nomes dos jogadores.</p>
-                    <div class="dados-jogadores">
-                        <div class="dados-jogador-1">
-
-                        </div>
-                        <div class="dados-jogador-2"></div>
+                    <div class="jogador">
+                        <p class="nome">Jogador 1</p>
+                        <span>0 vitórias</span>
+                    </div>
+                    <div class="jogador">
+                        <p class="nome">Jogador 2</p>
+                        <span>0 vitórias</span>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>

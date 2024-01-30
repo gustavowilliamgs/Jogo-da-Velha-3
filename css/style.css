@@ -98,6 +98,18 @@ h1 {
     height: 50px;
 }
 
+.parts:not(.disabled .parts, .squares .parts) {
+    cursor: grab;
+}
+
+.active .parts {
+    cursor: no-drop;
+}
+
+.active .parts:active {
+    cursor: grabbing;
+}
+
 #info {
     position: absolute;
     top: 30px;
@@ -198,4 +210,23 @@ h1 {
     height: 370px;
 
     transform: rotate(45deg);
+}
+
+.jogador {
+    display: flex;
+    justify-content: space-around;
+}
+
+.jogador p {
+    cursor: grabbing;
+}
+
+.btn-edit {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    background-image: url("../assets/imgs/pen.png");
+    background-size: cover;
+    filter: invert(1);
+    border: none;
 }

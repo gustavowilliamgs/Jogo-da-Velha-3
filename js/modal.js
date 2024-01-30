@@ -36,8 +36,8 @@ btnComecarEl.addEventListener("click", () => {
 
 const pontuacoesEl = document.querySelector("#scores");
 
+const modalPontuacoesEl = $("#modal-pontuacoes");
 pontuacoesEl.addEventListener("click", () => {
-    const modalPontuacoesEl = $("#modal-pontuacoes");
     const conteudoModalPontuacoesEl = document.querySelector(
         "#modal-content-pontuacoes"
     );

@@ -16,14 +16,6 @@ function comecarJogo(x, o) {
     jogador2El.className = "players";
     jogador2El.innerHTML = `<h2>Jogador 2</h2>`;
 
-    if (x) {
-        jogador1El.classList.add("active");
-        jogador2El.classList.add("disabled");
-    } else {
-        jogador1El.classList.add("disabled");
-        jogador2El.classList.add("active");
-    }
-
     jogoEl.appendChild(jogador1El);
     jogoEl.appendChild(tabuleiroEl);
     jogoEl.appendChild(jogador2El);
@@ -43,6 +35,14 @@ function comecarJogo(x, o) {
 
         jogador1El.appendChild(xEl);
         jogador2El.appendChild(oEl);
+    }
+
+    if (x) {
+        jogador1El.classList.add("active");
+        jogador2El.classList.add("disabled");
+    } else {
+        jogador1El.classList.add("disabled");
+        jogador2El.classList.add("active");
     }
 
     for (let i = 0; i < 9; i++) {
