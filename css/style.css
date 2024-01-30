@@ -217,10 +217,6 @@ h1 {
     justify-content: space-around;
 }
 
-.jogador p {
-    cursor: grabbing;
-}
-
 .btn-edit {
     width: 30px;
     height: 30px;
