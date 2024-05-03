@@ -7,9 +7,9 @@ $(window).on("load", () => {
 let x = null;
 let o = null;
 
-const btnEscolhaXEl = document.querySelector("#btn-chose-x");
-const btnEscolhaOEl = document.querySelector("#btn-chose-o");
-const btnComecarEl = document.querySelector("#btn-start");
+const btnEscolhaXEl = document.querySelector("#btn-escolha-x");
+const btnEscolhaOEl = document.querySelector("#btn-escolha-o");
+const btnComecarEl = document.querySelector("#btn-iniciar");
 
 btnEscolhaXEl.addEventListener("click", function () {
     btnEscolhaXEl.classList.add("selected");
@@ -34,12 +34,29 @@ btnComecarEl.addEventListener("click", () => {
     }
 });
 
-const pontuacoesEl = document.querySelector("#scores");
+const pontuacoesEl = document.querySelector("#placares");
 
 const modalPontuacoesEl = $("#modal-pontuacoes");
 pontuacoesEl.addEventListener("click", () => {
-    const conteudoModalPontuacoesEl = document.querySelector(
-        "#modal-content-pontuacoes"
-    );
+    let pontuacaoX = localStorage.getItem("pontuacao-x");
+    let pontuacaoO = localStorage.getItem("pontuacao-o");
+    let nome1 = localStorage.getItem("nome-x");
+    let nome2 = localStorage.getItem("nome-o");
+
+    const conteudoModalPontuacoesEl = `
+        <div class="jogador" id="jogador-1">
+            <p class="nome" id="nome-1" contenteditable>${nome1}</p>
+            <span class="vitorias">${pontuacaoX} vitórias</span>
+        </div>
+        <div class="jogador" id="jogador-2">
+            <p class="nome" id="nome-2" contenteditable>${nome2}</p>
+            <span class="vitorias">${pontuacaoO} vitórias</span>
+        </div>
+    `;
+
+    const configuracaoModal = document.querySelector(".modal-body-configuracoes");
+
+    configuracaoModal.innerHTML = conteudoModalPontuacoesEl;
+
     modalPontuacoesEl.modal("show");
 });

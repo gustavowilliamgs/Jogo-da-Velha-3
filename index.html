@@ -9,11 +9,10 @@
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        crossorigin="ano nymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
         integrity="sha512-0bEtK0USNd96MnO4XhH8jhv3nyRF0eK87pJke6pkYf3cM0uDIhNJy9ltuzqgypoIFXw3JSuiy04tVk4AjpZdZw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!--  -->
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -21,25 +20,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
         </script>
-    <!--  -->
 
     <!-- Icon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <!--  -->
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/carrossel.css">
     <link rel="stylesheet" href="css/midia-query.css">
-    <!--  -->
 
     <!-- JS -->
     <script src="js/tooltip.js" defer></script>
     <script src="js/fullScreen.js" defer></script>
+    <script src="js/settings.js" defer></script>
     <script src="js/modal.js" defer></script>
     <script src="js/winner.js" defer></script>
     <script src="js/game.js" defer></script>
-    <!--  -->
 </head>
 
 <body class="bg-dark text-white">
@@ -47,17 +42,18 @@
 
     <h1 class="position-absolute">Jogo da Velha 3</h1>
 
-    <button id="info" type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
+    <button id="info" type="button" class="btn btn-outlinha-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
         data-bs-title="Descubra como jogar">?
     </button>
 
-    <div id="game">
+    <div id="jogo">
 
     </div>
 
-    <button id="scores" type="button" class="btn btn-secondary">Placares</button>
+    <button id="placares" type="button" class="btn btn-secondary">Configurações</button>
 
     <!-- Modais -->
+    <!-- Modal inicial -->
     <div class="modal fade" id="modal-inicial" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -65,24 +61,26 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Bem vindo(a) ao Jogo da Velha 3</h5>
                 </div>
-                <div class="modal-body" id="modal-body-choice">
+                <div class="modal-body mostrar-jogadores">
                     <p>Escolha quem vai fazer a primeira jogada:</p>
                     <div>
-                        <img id="btn-chose-x" class="btn-chose" src="assets/svgs/x.svg">
-                        <img id="btn-chose-o" class="btn-chose" src="assets/svgs/o.svg">
+                        <img id="btn-escolha-x" class="btn-escolha" draggable="false" src="assets/svgs/x.svg">
+                        <img id="btn-escolha-o" class="btn-escolha" draggable="false" src="assets/svgs/o.svg">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-start" type="button" class="btn btn-primary">Iniciar</button>
+                    <button id="btn-iniciar" type="button" class="btn btn-primary">Iniciar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="modal-winner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <!--  -->
+
+    <div class="modal fade" id="modal-mostrar-vencedor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div id="modal-content-winner" class="modal-content bg-dark">
+            <div id="mostrar-vencedor-conteudo" class="modal-content bg-dark">
 
             </div>
         </div>
@@ -93,23 +91,16 @@
         <div class="modal-dialog">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                    <button type="button" class="btn-edit" data-bs-toggle="tooltip" data-bs-placement="left"
+                    <h5 class="modal-title">Configurações</h5>
+                    <button type="button" id="btn-editar-informacoes" data-bs-toggle="tooltip" data-bs-placement="left"
                         data-bs-title="Editar nomes"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="jogador">
-                        <p class="nome">Jogador 1</p>
-                        <span>0 vitórias</span>
-                    </div>
-                    <div class="jogador">
-                        <p class="nome">Jogador 2</p>
-                        <span>0 vitórias</span>
-                    </div>
+                <div class="modal-body-configuracoes">
+                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button id="btn-salvar" type="button" class="btn btn-primary">Salvar</button>
                 </div>
             </div>
         </div>

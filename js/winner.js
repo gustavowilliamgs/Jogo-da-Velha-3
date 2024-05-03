@@ -26,11 +26,19 @@ function checarGanhador() {
     }
 
     if (xGanhou) {
+        if (localStorage.getItem("pontuacao-x")) {
+            const pontuacao = localStorage.getItem("pontuacao") + 1;
+            localStorage.setItem("pontuacao-x", pontuacao);
+        }
         animacaoDoGanhador(1);
         setTimeout(() => {
             mostrarGanhador("x");
         }, "1000");
     } else if (oGanhou) {
+        if (localStorage.getItem("pontuacao-o")) {
+            const pontuacao = localStorage.getItem("pontuacao") + 1;
+            localStorage.setItem("pontuacao-o", pontuacao);
+        }
         animacaoDoGanhador(2);
         setTimeout(() => {
             mostrarGanhador("o");
@@ -90,36 +98,36 @@ function animacaoDoGanhador(ganhador) {
     }
 }
 
-function linha(direction, modo) {
+function linha(direcao, modo) {
     const linhaEl = document.createElement("div");
     linhaEl.classList.add("line");
-    document.querySelector("#game-board").appendChild(linhaEl);
+    document.querySelector("#tabuleiro").appendChild(linhaEl);
 
-    if (direction === "horizontal") {
+    if (direcao === "horizontal") {
         if (modo === 0) {
-            linhaEl.classList.add("line-00");
+            linhaEl.classList.add("linha-00");
         } else if (modo === 1) {
-            linhaEl.classList.add("line-01");
+            linhaEl.classList.add("linha-01");
         } else if (modo === 2) {
-            linhaEl.classList.add("line-02");
+            linhaEl.classList.add("linha--02");
         } else {
             alert("Erro!");
         }
-    } else if (direction === "vertical") {
+    } else if (direcao === "vertical") {
         if (modo === 0) {
-            linhaEl.classList.add("line-10");
+            linhaEl.classList.add("linha-10");
         } else if (modo === 1) {
-            linhaEl.classList.add("line-11");
+            linhaEl.classList.add("linha-11");
         } else if (modo === 2) {
-            linhaEl.classList.add("line-12");
+            linhaEl.classList.add("linha-12");
         } else {
             alert("Erro!");
         }
-    } else if (direction === "diagonal") {
+    } else if (direcao === "diagonal") {
         if (modo === 0) {
-            linhaEl.classList.add("line-20");
+            linhaEl.classList.add("linha-20");
         } else if (modo === 1) {
-            linhaEl.classList.add("line-21");
+            linhaEl.classList.add("linha-21");
         } else {
             alert("Erro!");
         }
@@ -129,16 +137,16 @@ function linha(direction, modo) {
 }
 
 function mostrarGanhador(ganhador) {
-    let modalContent = null;
+    let modalConteudo = null;
     if (ganhador === "x") {
-        modalContent = `
+        modalConteudo = `
                 <div class="modal-header">
                     <h5 class="modal-title">X ganhou a partida</h5>
                 </div>
-                <div class="modal-body" id="modal-body-choice">
+                <div class="modal-body mostrar-jogadores">
                     <p>Jogador X ganhou a partida</p>
                     <div>
-                        <img class="btn-chose" src="assets/svgs/x.svg">
+                        <img class="btn-escolha" src="assets/svgs/x.svg">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -146,14 +154,14 @@ function mostrarGanhador(ganhador) {
                 </div>
             `;
     } else if (ganhador === "o") {
-        modalContent = `
+        modalConteudo = `
                 <div class="modal-header">
                     <h5 class="modal-title">O ganhou a partida</h5>
                 </div>
-                <div class="modal-body" id="modal-body-choice">
+                <div class="modal-body mostrar-jogadores">
                     <p>Jogador O ganhou a partida</p>
                     <div>
-                        <img class="btn-chose" src="assets/svgs/o.svg">
+                        <img class="btn-escolha" src="assets/svgs/o.svg">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -162,18 +170,18 @@ function mostrarGanhador(ganhador) {
             `;
     }
 
-    const conteudoModalVencedor = document.querySelector(
-        "#modal-content-winner"
+    const conteudoModalVencedorEl = document.querySelector(
+        "#mostrar-vencedor-conteudo"
     );
 
-    conteudoModalVencedor.innerHTML = modalContent;
+    conteudoModalVencedorEl.innerHTML = modalConteudo;
 
-    $("#modal-winner").modal("show");
-    document.querySelector("#game").innerHTML = "";
+    $("#modal-mostrar-vencedor").modal("show");
+    document.querySelector("#jogo").innerHTML = "";
 
     const jogarNovamenteEl = document.querySelector("#btn-play-again");
     jogarNovamenteEl.addEventListener("click", () => {
-        $("#modal-winner").modal("hide");
+        $("#modal-mostrar-vencedor").modal("hide");
         $("#modal-inicial").modal("show");
     });
 }
