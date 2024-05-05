@@ -42,51 +42,47 @@
 
     <h1 class="position-absolute">Jogo da Velha 3</h1>
 
-    <button id="info" type="button" class="btn btn-outlinha-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
+    <button id="info" type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
         data-bs-title="Descubra como jogar">?
     </button>
 
-    <div id="jogo">
+    <div id="game">
 
     </div>
 
-    <button id="placares" type="button" class="btn btn-secondary">Configurações</button>
+    <button id="scores" type="button" class="btn btn-secondary">Configurações</button>
 
-    <!-- Modais -->
-    <!-- Modal inicial -->
-    <div class="modal fade" id="modal-inicial" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="modal-main" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <h5 class="modal-title">Bem vindo(a) ao Jogo da Velha 3</h5>
                 </div>
-                <div class="modal-body mostrar-jogadores">
+                <div class="modal-body show-players">
                     <p>Escolha quem vai fazer a primeira jogada:</p>
                     <div>
-                        <img id="btn-escolha-x" class="btn-escolha" draggable="false" src="assets/svgs/x.svg">
-                        <img id="btn-escolha-o" class="btn-escolha" draggable="false" src="assets/svgs/o.svg">
+                        <img id="btn-selected-x" class="btn-selected" draggable="false" src="assets/svgs/x.svg">
+                        <img id="btn-selected-o" class="btn-selected" draggable="false" src="assets/svgs/o.svg">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-iniciar" type="button" class="btn btn-primary">Iniciar</button>
+                    <button id="btn-start" type="button" class="btn btn-primary">Iniciar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!--  -->
-
-    <div class="modal fade" id="modal-mostrar-vencedor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="modal-show-players" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div id="mostrar-vencedor-conteudo" class="modal-content bg-dark">
+            <div id="show-content-winner" class="modal-content bg-dark">
 
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="modal-pontuacoes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="modal-settings" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content bg-dark">
@@ -95,17 +91,16 @@
                     <button type="button" id="btn-editar-informacoes" data-bs-toggle="tooltip" data-bs-placement="left"
                         data-bs-title="Editar nomes"></button>
                 </div>
-                <div class="modal-body-configuracoes">
+                <div class="settings-modal-body">
                     
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button id="btn-salvar" type="button" class="btn btn-primary">Salvar</button>
+                    <button id="btn-save" type="button" class="btn btn-primary">Salvar</button>
                 </div>
             </div>
         </div>
     </div>
-    <!--  -->
 </body>
 
 </html>

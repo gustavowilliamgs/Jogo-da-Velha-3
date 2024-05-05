@@ -1,40 +1,40 @@
-const tabuleiro = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+const board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-function comecarJogo(x, o) {
-    let movimentos = 0;
+function startGame(x, o) {
+    let moves = 0;
 
-    if (!(localStorage.getItem("pontuacao-x"))) {
-        localStorage.setItem("pontuacao-x", 0);
-        localStorage.setItem("pontuacao-o", 0);
+    if (!(localStorage.getItem("scores-x"))) {
+        localStorage.setItem("scores-x", 0);
+        localStorage.setItem("scores-o", 0);
     }
 
-    if (!(localStorage.getItem("nome-x"))) {
-        localStorage.setItem("nome-x", "Jogador 1");
-        localStorage.setItem("nome-o", "Jogador 2");
+    if (!(localStorage.getItem("name-x"))) {
+        localStorage.setItem("name-x", "Jogador 1");
+        localStorage.setItem("name-o", "Jogador 2");
     }
 
-    let nome1 = localStorage.getItem("nome-x");
-    let nome2 = localStorage.getItem("nome-o");
+    const playerNameX = localStorage.getItem("name-x");
+    const playerNameO = localStorage.getItem("name-o");
 
-    const jogoEl = document.querySelector("#jogo");
-    jogoEl.innerHTML = "";
+    const gameEl = document.querySelector("#game");
+    gameEl.innerHTML = "";
 
-    const tabuleiroEl = document.createElement("div");
-    tabuleiroEl.id = "tabuleiro";
+    const boardEl = document.createElement("div");
+    boardEl.id = "board";
 
-    const jogador1El = document.createElement("div");
-    jogador1El.id = "jogador-1";
-    jogador1El.className = "jogadores";
-    jogador1El.innerHTML = `<h2 id="nome-jogador-1">${nome1}</h2>`;
+    const plyerSideXEl = document.createElement("div");
+    plyerSideXEl.id = "player-x";
+    plyerSideXEl.className = "players";
+    plyerSideXEl.innerHTML = `<h2 id="player-name-x">${playerNameX}</h2>`;
 
-    const jogador2El = document.createElement("div");
-    jogador2El.id = "jogador-2";
-    jogador2El.className = "jogadores";
-    jogador2El.innerHTML = `<h2 id="nome-jogador-2">${nome2}</h2>`;
+    const plyerSideOEl = document.createElement("div");
+    plyerSideOEl.id = "player-o";
+    plyerSideOEl.className = "players";
+    plyerSideOEl.innerHTML = `<h2 id="player-name-o">${playerNameO}</h2>`;
 
-    jogoEl.appendChild(jogador1El);
-    jogoEl.appendChild(tabuleiroEl);
-    jogoEl.appendChild(jogador2El);
+    gameEl.appendChild(plyerSideXEl);
+    gameEl.appendChild(boardEl);
+    gameEl.appendChild(plyerSideOEl);
     
     let xEl;
     let oEl;
@@ -43,8 +43,8 @@ function comecarJogo(x, o) {
         xEl = document.createElement("div");
         oEl = document.createElement("div");
 
-        xEl.className = "peca-x pecas";
-        oEl.className = "peca-o pecas";
+        xEl.className = "piece-x pieces";
+        oEl.className = "piece-o pieces";
 
         xEl.id = "x-" + i;
         oEl.id = "o-" + i;
@@ -52,133 +52,128 @@ function comecarJogo(x, o) {
         xEl.draggable = x;
         oEl.draggable = o;
 
-        jogador1El.appendChild(xEl);
-        jogador2El.appendChild(oEl);
+        plyerSideXEl.appendChild(xEl);
+        plyerSideOEl.appendChild(oEl);
     }
 
     if (x) {
-        jogador1El.classList.add("ativo");
-        jogador2El.classList.add("disativado");
+        plyerSideXEl.classList.add("active");
+        plyerSideOEl.classList.add("disabled");
     } else {
-        jogador1El.classList.add("disativado");
-        jogador2El.classList.add("ativo");
+        plyerSideXEl.classList.add("disabled");
+        plyerSideOEl.classList.add("active");
     }
 
     for (let i = 0; i < 9; i++) {
-        const quadradoEl = document.createElement("div");
-        quadradoEl.className = "quadrados";
+        const squareEl = document.createElement("div");
+        squareEl.className = "squares";
 
-        tabuleiroEl.appendChild(quadradoEl);
+        boardEl.appendChild(squareEl);
     }
 
-    const pecasEl = document.querySelectorAll(".pecas");
-    const quadradosEl = document.querySelectorAll(".quadrados");
+    let piecesEl = document.querySelectorAll(".pieces");
+    const squaresEl = document.querySelectorAll(".squares");
 
-    pecasEl.forEach((peca) => {
-        peca.ondragstart = function (e) {
+    piecesEl.forEach((piece) => {
+        piece.ondragstart = function (e) {
             e.dataTransfer.setData("text", e.target.id);
             e.dataTransfer.effectAllowed = "move";
             window.navigator.vibrate(300);
         };
     });
 
-    quadradosEl.forEach((quadrado, i) => {
-        quadrado.ondragover = function (e) {
-            const data = e.dataTransfer.getData("text");
-            const peca = document.getElementById(data);
-
-            if (quadrado.childElementCount < 1) {
-                quadrado.style.backgroundColor = "#19875471";
+    squaresEl.forEach((square, i) => {
+        square.ondragover = function (e) {
+            if (square.childElementCount < 1) {
+                square.style.backgroundColor = "#19875471";
             } else {
-                quadrado.style.backgroundColor = "#dc354681";
+                square.style.backgroundColor = "#dc354681";
             }
     
             e.preventDefault();
         };
 
         
-        quadrado.ondragleave = (e) => {
+        square.ondragleave = (e) => {
             e.target.style.backgroundColor = "transparent";
         };
         
-        quadrado.ondrop = function (e) {
+        square.ondrop = function (e) {
             e.target.style.backgroundColor = "transparent";
-            if (quadrado.childElementCount < 1) {
+            if (square.childElementCount < 1) {
                 const data = e.dataTransfer.getData("text");
-                const pecaTransferida = document.getElementById(data);
+                const transferredPieceEl = document.getElementById(data);
 
-                if (movimentos < 6) {
-                    pecaTransferida.draggable = false;
+                if (moves < 6) {
+                    transferredPieceEl.draggable = false;
                 }
                 
-                e.target.appendChild(pecaTransferida);
+                e.target.appendChild(transferredPieceEl);
                 e.preventDefault();
 
                 if (x) {
-                    tabuleiro[i] = 1;
+                    board[i] = 1;
                 } else {
-                    tabuleiro[i] = 2;
+                    board[i] = 2;
                 }
 
-                quadradosEl.forEach((quadrado, i) => {
-                    if (quadrado.childElementCount === 0) {
-                        tabuleiro[i] = 0;
+                squaresEl.forEach((square, i) => {
+                    if (square.childElementCount === 0) {
+                        board[i] = 0;
                     }
                 });
                 
-                movimentos++;
-                trocarJogador();
+                moves++;
+                changeTurns();
             }
 
-            quadrado.style.backgroundColor = "";
+            square.style.backgroundColor = "";
         };
     });
 
-    function trocarJogador() {
-        let pecasEl;
-        
+    function changeTurns() {       
         x = !x;
         o = !o;
     
-        if (movimentos < 6) {
-            pecasEl = document.querySelectorAll(".jogadores .pecas");
+        if (moves < 6) {
+            piecesEl = document.querySelectorAll(".players .pieces");
 
-            pecasEl.forEach((peca) => {
-                peca.draggable = !peca.draggable;
+            piecesEl.forEach((piece) => {
+                piece.draggable = !piece.draggable;
             });
-        } else if (movimentos === 6) {
-            pecasEl = document.querySelectorAll(".pecas");
+        } else if (moves === 6) {
+            piecesEl = document.querySelectorAll(".pieces");
 
-            let pecasXEl = document.querySelectorAll(".peca-x");
-            let pecasOEl = document.querySelectorAll(".peca-o");
+            let piecesXEl = document.querySelectorAll(".piece-x");
+            let piecesOEl = document.querySelectorAll(".piece-o");
 
-            pecasXEl.forEach((peca) => {
-                peca.draggable = x;
+            piecesXEl.forEach((piece) => {
+                piece.draggable = x;
             });
 
-            pecasOEl.forEach((peca) => {
-                peca.draggable = o;
+            piecesOEl.forEach((piece) => {
+                piece.draggable = o;
             });
         } else {
-            pecasEl = document.querySelectorAll(".pecas");
+            piecesEl = document.querySelectorAll(".pieces");
 
-            pecasEl.forEach((peca) => {
-                peca.draggable = !peca.draggable;
+            piecesEl.forEach((piece) => {
+                piece.draggable = !piece.draggable;
             });
         }
 
         if (x) {
-            jogador1El.classList.remove("disativado");
-            jogador1El.classList.add("ativo");
-            jogador2El.classList.remove("ativo");
-            jogador2El.classList.add("disativado");
+            plyerSideXEl.classList.remove("disabled");
+            plyerSideXEl.classList.add("active");
+            plyerSideOEl.classList.remove("active");
+            plyerSideOEl.classList.add("disabled");
         } else {
-            jogador1El.classList.remove("ativo");
-            jogador1El.classList.add("disativado");
-            jogador2El.classList.remove("disativado");
-            jogador2El.classList.add("ativo");
+            plyerSideXEl.classList.remove("active");
+            plyerSideXEl.classList.add("disabled");
+            plyerSideOEl.classList.remove("disabled");
+            plyerSideOEl.classList.add("active");
         }
 
-        checarGanhador();
+        checkWinner();
     }
 }

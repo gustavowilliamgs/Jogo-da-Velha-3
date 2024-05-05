@@ -1,22 +1,22 @@
 @media (max-width: 880px) {
-    .jogadores {
+    .players {
         width: 100px;
         height: 200px;
         flex-direction: column;
         gap: 15px;
     }
-    .jogadores h2 {
+    .players h2 {
         transform: translateY(-120px);
     }
 }
 
 @media (max-width: 630px) {
-    #tabuleiro {
+    #board {
         width: 250px;
         height: 250px;
     }
 
-    .pecas {
+    .pieces {
         width: 40px;
         height: 40px;
     }
@@ -25,39 +25,39 @@
         height: 265px;
     }
 
-    .linha-00 {
+    .line-00 {
         top: -91px;
         left: 118px;
     }
 
-    .linha-01 {
+    .line-01 {
         top: -9px;
         left: 120px;
     }
 
-    .linha-02 {
+    .line-02 {
         top: 75px;
         left: 121px;
     }
 
-    .linha-10 {
+    .line-10 {
         top: -5px;
         left: 40px;
     }
 
-    .linha-11 {
+    .line-11 {
         top: -5px;
         left: 120px;
     }
-    .linha-12 {
+    .line-12 {
         top: -5px;
         left: 203px;
     }
-    .linha-20 {
+    .line-20 {
         top: -8px;
         left: 120px;
     }
-    .linha-21 {
+    .line-21 {
         top: -11px;
         left: 122px;
     }
@@ -70,7 +70,7 @@
         left: 30px;
     }
 
-    .jogadores {
+    .players {
         flex-direction: row;
         position: absolute;
         bottom: 0;
@@ -78,16 +78,16 @@
         height: 80px;
     }
 
-    .jogadores h2 {
+    .players h2 {
         transform: translateY(-70px);
     }
 
-    .ativo {
+    .active {
         display: flex;
     }
 
-    .disativado,
-    .disativado h2 {
+    .disabled,
+    .disabled h2 {
         display: none;
     }
 
@@ -104,7 +104,7 @@
 }
 
 @media (max-width: 450px) {
-    #jogo {
+    #game {
         padding: 20px;
     }
 
@@ -126,7 +126,7 @@
 }
 
 @media (max-width: 600px) and (max-height: 500px) {
-    #tabuleiro {
+    #board {
         top: -25px;
     }
 }

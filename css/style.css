@@ -26,7 +26,7 @@ h1 {
     top: 30px;
 }
 
-#jogo {
+#game {
     width: 100vw;
     height: 100vh;
 
@@ -50,13 +50,13 @@ h1 {
     filter: invert(1);
 }
 
-#tabuleiro {
+#board {
     position: relative;
 
     width: 300px;
     height: 300px;
 
-    background-image: url("../assets/svgs/tabuleiro.svg");
+    background-image: url("../assets/svgs/board.svg");
     background-size: cover;
 
     display: grid;
@@ -64,14 +64,14 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.quadrados {
+.squares {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: transparent;
 }
 
-.jogadores {
+.players {
     width: 250px;
     height: 250px;
 
@@ -83,39 +83,39 @@ h1 {
     box-shadow: 0px 0px 15px 0px #00000021;
 }
 
-.jogadores h2 {
+.players h2 {
     position: absolute;
     transform: translateY(-90px);
 }
 
-.ativo {
+.active {
     box-shadow: 0px 0px 15px 0px #1d995f86;
 }
 
-.peca-x {
+.piece-x {
     background-image: url("../assets/svgs/x.svg");
     background-size: cover;
 }
 
-.peca-o {
+.piece-o {
     background-image: url("../assets/svgs/o.svg");
     background-size: cover;
 }
 
-.pecas {
+.pieces {
     width: 50px;
     height: 50px;
 }
 
-.pecas[draggable="true"] {
+.pieces[draggable="true"] {
     cursor: grab;
 }
 
-.pecas[draggable="false"] {
+.pieces[draggable="false"] {
     cursor: no-drop;
 }
 
-.pecas:ativo[draggable="true"] {
+.pieces:active[draggable="true"] {
     cursor: grabbing;
 }
 
@@ -126,18 +126,18 @@ h1 {
     color: white;
 }
 
-#placares {
+#scores {
     position: absolute;
     top: 80%;
 }
 
-.mostrar-jogadores {
+.show-players {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.btn-escolha {
+.btn-selected {
     margin: 10px;
     padding: 20px;
 
@@ -146,7 +146,7 @@ h1 {
     background-color: #2d2d2d;
 }
 
-.btn-escolha:hover {
+.btn-selected:hover {
     cursor: pointer;
 }
 
@@ -168,43 +168,43 @@ h1 {
     z-index: 1;
 }
 
-.linha-00 {
+.line-00 {
     top: -95px;
     left: 145px;
 
     transform: rotateZ(90deg);
 }
 
-.linha-01 {
+.line-01 {
     top: calc(-95px + 100px);
     left: 145px;
 
     transform: rotateZ(90deg);
 }
 
-.linha-02 {
+.line-02 {
     top: calc(-95px + 200px);
     left: 145px;
 
     transform: rotateZ(90deg);
 }
 
-.linha-10 {
+.line-10 {
     top: 5px;
     left: 45px;
 }
 
-.linha-11 {
+.line-11 {
     top: 5px;
     left: calc(45px + 100px);
 }
 
-.linha-12 {
+.line-12 {
     top: 5px;
     left: calc(45px + 200px);
 }
 
-.linha-20 {
+.line-20 {
     top: -35px;
     left: 145px;
 
@@ -213,7 +213,7 @@ h1 {
     transform: rotate(-45deg);
 }
 
-.linha-21 {
+.line-21 {
     top: -35px;
     left: 145px;
 
@@ -222,7 +222,7 @@ h1 {
     transform: rotate(45deg);
 }
 
-.jogador {
+.player {
     display: flex;
     justify-content: center;
 }
@@ -237,7 +237,7 @@ h1 {
     border: none;
 }
 
-.nome,
-.vitorias {
+.name,
+.wins {
     padding: 10px 20px;
 }
