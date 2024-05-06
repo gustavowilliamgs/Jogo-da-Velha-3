@@ -222,22 +222,44 @@ h1 {
     transform: rotate(45deg);
 }
 
+.settings-modal-body {
+    padding: 30px;
+}
+
 .player {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-#btn-editar-informacoes {
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-    background-image: url("../assets/imgs/pen.png");
-    background-size: cover;
-    filter: invert(1);
-    border: none;
+.edit-name {
+    width: 40%;
+    height: 100%;
 }
 
-.name,
-.wins {
-    padding: 10px 20px;
+.edit-name input {
+    outline: none;
+}
+
+.edit-name input:focus {
+    border: 2px solid #202020;
+}
+
+#name-x {
+    margin-bottom: 10px;
+}
+
+.number-wins {
+    margin: 20px 0;
+}
+
+#btn-clear {
+    float: left;
+}
+
+.modal-footer div {
+    width: 65%;
+}
+
+#btn-scores {
+    display: none;
 }

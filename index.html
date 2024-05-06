@@ -51,6 +51,7 @@
     </div>
 
     <button id="scores" type="button" class="btn btn-secondary">Configurações</button>
+    <div id="btn-scores"></div>
 
     <div class="modal fade" id="modal-main" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -88,13 +89,14 @@
             <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <h5 class="modal-title">Configurações</h5>
-                    <button type="button" id="btn-editar-informacoes" data-bs-toggle="tooltip" data-bs-placement="left"
-                        data-bs-title="Editar nomes"></button>
                 </div>
                 <div class="settings-modal-body">
                     
                 </div>
                 <div class="modal-footer">
+                    <div>
+                        <button id="btn-clear" type="button" class="btn btn-danger">Apagar</button>
+                    </div>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                     <button id="btn-save" type="button" class="btn btn-primary">Salvar</button>
                 </div>

@@ -68,6 +68,26 @@
         position: absolute;
         top: 30px;
         left: 30px;
+        display: none;
+    }
+
+    #btn-scores {
+        display: block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        background-image: url("../assets/imgs/settings.png");
+        background-position: center;
+        background-size: cover;
+        filter: invert(1);
+        cursor: pointer;
+    }
+
+    #btn-scores:active {
+        transform: rotateZ(90deg);
+        transition: .25s;
     }
 
     .players {
@@ -104,6 +124,9 @@
 }
 
 @media (max-width: 450px) {
+    .settings-modal-body {
+        padding: 0px;
+    }
     #game {
         padding: 20px;
     }
