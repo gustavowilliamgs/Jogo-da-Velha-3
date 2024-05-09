@@ -253,11 +253,9 @@ h1 {
 }
 
 #btn-clear {
-    float: left;
-}
-
-.modal-footer div {
-    width: 65%;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
 }
 
 #btn-scores {
